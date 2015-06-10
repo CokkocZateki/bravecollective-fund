@@ -71,3 +71,11 @@ function update() {
 	},
     });
 }
+
+function donate() {
+  if (typeof CCPEVE != 'undefined') {
+   CCPEVE.showInfo(2, 98169165);
+  } else {
+    window.location = "http://evewho.com/corp/Brave+Newbies+Inc.";
+  }
+}

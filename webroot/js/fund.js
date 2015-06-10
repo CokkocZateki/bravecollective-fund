@@ -55,6 +55,9 @@ jQuery(document).ready(function() {
     setInterval(function () {update();}, 60000 * 1);
 });
 
+var lastbalance = 0;
+var lastupdate = "";
+
 function update() {
     $.ajax({
 	async: true,
@@ -64,10 +67,17 @@ function update() {
 	error: function(xhr, status, error) {
 	},
 	success: function(json) {
-	    thermometer(200000000000.0, json['balance'] );
-	    $('#updated').html("");
-	    $('#updated').html("<time class='timeago text-success' datetime='" + json['time'] + "'></time>");
-	    jQuery("time.timeago").timeago();
+	    if (lastbalance != json['balance']) {
+		lastbalance = json['balance'];
+		thermometer(200000000000.0, json['balance'] );
+	    }
+
+	    if (lastupdate != json['time']) {
+		lastupdate = json['time'];
+		$('#updated').html("");
+		$('#updated').html("<time class='timeago text-success' datetime='" + json['time'] + "'></time>");
+		jQuery("time.timeago").timeago();
+	    }
 	},
     });
 }

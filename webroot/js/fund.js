@@ -74,8 +74,8 @@ function update() {
 
 function donate() {
   if (typeof CCPEVE != 'undefined') {
-   CCPEVE.showInfo(2, 98169165);
+   CCPEVE.showInfo(2, 98402019);
   } else {
-    window.location = "http://evewho.com/corp/Brave+Newbies+Inc.";
+    window.location = "http://evewho.com/corp/BC+Piggy";
   }
 }
